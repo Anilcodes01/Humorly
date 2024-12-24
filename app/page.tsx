@@ -2,9 +2,7 @@
 import InfoCards from "@/components/InfoCards";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import {
-  Award,
-} from "lucide-react";
+import { Award } from "lucide-react";
 
 export default function Home() {
   return (
@@ -23,7 +21,10 @@ export default function Home() {
           Because smile is contagious—Your daily dose of laughter and humor!
         </p>
 
-        <Button className=" sm:w-auto px-8 bg-purple-600 hover:bg-purple-700" size="lg">
+        <Button
+          className=" sm:w-auto px-8 bg-purple-600 hover:bg-purple-700"
+          size="lg"
+        >
           Get Started
         </Button>
       </motion.div>
@@ -42,13 +43,13 @@ export default function Home() {
           Daily Humor Dose
         </p>
         <p className="text-purple-600 mb-4 text-lg md:text-xl text-center">
-          Today's Prompt: "Describe your Monday using only emojis"
+          Today&#39;s Prompt: &quot;Describe your Monday using only emojis&quot;
         </p>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="text-3xl md:text-4xl"
+          className="text-3xl md:text-4xl text-center"
         >
           😴☕😫💻🙃🕓🏃‍♂️🍕😅
         </motion.div>
@@ -110,7 +111,7 @@ export default function Home() {
 
       <motion.footer
         initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1, filter: 'blur(0.5px)' }}
+        animate={{ y: 0, opacity: 1, filter: "blur(0.5px)" }}
         transition={{ duration: 0.5, delay: 1 }}
         className="bg-purple-800 py-6 px-4 mt-12"
       >
