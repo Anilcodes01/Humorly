@@ -115,6 +115,7 @@ export async function POST(req: NextRequest) {
       userPunchline,
       punchline,
       feedback,
+      userJokes,
     });
   } catch (error) {
     console.error("Error in API route");

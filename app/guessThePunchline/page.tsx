@@ -35,7 +35,8 @@ export default function GuessThePunchlinePage() {
         setUserPunchline("");
         setFeedback("");
       } catch (error) {
-        setError("Failed to fetch joke...!");
+        setError("Failed to fetch joke...!", );
+        console.log(error)
       }
     };
     fetchJoke();
@@ -60,6 +61,7 @@ export default function GuessThePunchlinePage() {
       setShowRealPunchline(true);
     } catch (error) {
       setError("Failed to get feedback");
+      console.log(error)
     } finally {
       setIsLoading(false);
     }
@@ -79,6 +81,7 @@ export default function GuessThePunchlinePage() {
       setError("");
     } catch (error) {
       setError("Failed to fetch new joke");
+      console.log(error)
     } finally {
       setIsLoading(false);
     }
