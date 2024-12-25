@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
           role: "model",
           parts: [
             {
-              text: "Tell me how is the puchline according to the joke and answer in short (min-100 characters) and humourous way with emojis.",
+              text: "Tell me how is the puchline according to the joke and answer in short  and humourous way with emojis.",
             },
           ],
         },
@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
     });
 
     const result = await chat.sendMessageStream(
-      "Answer in short (min-100 characters) and humourous way and with emojis also"
+      "Answer in short  and humourous way and with emojis also"
     );
 
     let feedback = "";

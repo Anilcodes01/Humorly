@@ -3,8 +3,10 @@ import InfoCards from "@/components/InfoCards";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Award } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="bg-gradient-to-b from-purple-50 to-pink-100 min-h-screen">
       <motion.div
@@ -22,6 +24,9 @@ export default function Home() {
         </p>
 
         <Button
+          onClick={() => {
+            router.push("/guessThePunchline");
+          }}
           className=" sm:w-auto px-8 bg-purple-600 hover:bg-purple-700"
           size="lg"
         >

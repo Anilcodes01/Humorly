@@ -88,10 +88,10 @@ export default function GuessThePunchlinePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br mt-12 from-blue-50 via-white to-purple-50">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br md:mt-12 mt-4 from-blue-50 via-white to-purple-50">
+      <div className="container mx-auto px-3 md:px-4 py-16">
         <Card className="max-w-2xl mx-auto shadow-lg">
-          <CardContent className="p-8">
+          <CardContent className="p-4 md:p-8 ">
             <div className="flex items-center justify-center gap-2 mb-12">
               <Sparkles className="w-8 h-8 text-blue-500" />
               <h1 className="text-3xl font-bold text-gray-800">Joke Time</h1>
@@ -155,15 +155,7 @@ export default function GuessThePunchlinePage() {
               {/* Results Section */}
               {showRealPunchline && (
                 <div className="space-y-4 animate-fadeIn">
-                  <div className="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-blue-100">
-                    <div className="flex items-center gap-2 mb-3">
-                      <MessageSquare className="w-5 h-5 text-blue-500" />
-                      <h2 className="text-lg font-medium text-gray-700">
-                        Your Punchline
-                      </h2>
-                    </div>
-                    <p className="text-lg text-gray-800">{userPunchline}</p>
-                  </div>
+                 
 
                   <div className="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-green-100">
                     <div className="flex items-center gap-2 mb-3">
