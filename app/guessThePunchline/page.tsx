@@ -35,8 +35,8 @@ export default function GuessThePunchlinePage() {
         setUserPunchline("");
         setFeedback("");
       } catch (error) {
-        setError("Failed to fetch joke...!", );
-        console.log(error)
+        setError("Failed to fetch joke...!");
+        console.log(error);
       }
     };
     fetchJoke();
@@ -61,7 +61,7 @@ export default function GuessThePunchlinePage() {
       setShowRealPunchline(true);
     } catch (error) {
       setError("Failed to get feedback");
-      console.log(error)
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -81,7 +81,7 @@ export default function GuessThePunchlinePage() {
       setError("");
     } catch (error) {
       setError("Failed to fetch new joke");
-      console.log(error)
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -180,7 +180,7 @@ export default function GuessThePunchlinePage() {
                       <div className="flex items-center gap-2 mb-3">
                         <Sparkles className="w-5 h-5 text-yellow-500" />
                         <h2 className="text-lg font-medium text-gray-700">
-                          Gemini's Take
+                          Gemini&apos;s Take
                         </h2>
                       </div>
                       <p className="text-lg text-gray-800">{feedback}</p>
