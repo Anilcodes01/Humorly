@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import prisma from "@/app/utils/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/utils/authOptions";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
@@ -27,8 +30,19 @@ export async function GET() {
   }
 }
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user.id) {
+      return NextResponse.json(
+        {
+          message: "Unauthorized",
+        },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
     const { joke, userPunchline, punchline } = body;
 
@@ -57,7 +71,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
           role: "model",
           parts: [
             {
-              text: "Tell me how is the puchline according to the joke and answer in humourous way with emojis.",
+              text: "Tell me how is the puchline according to the joke and answer in short (min-100 characters) and humourous way with emojis.",
             },
           ],
         },
@@ -65,13 +79,36 @@ export async function POST(req: NextRequest, res: NextResponse) {
     });
 
     const result = await chat.sendMessageStream(
-      "Answer in humourous way and with emojis also"
+      "Answer in short (min-100 characters) and humourous way and with emojis also"
     );
 
     let feedback = "";
     for await (const chunk of result.stream) {
       feedback += chunk.text();
     }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        id: session.user.id,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        {
+          message: "User not found",
+        },
+        { status: 404 }
+      );
+    }
+
+    const userJokes = await prisma.joke.create({
+      data: {
+        joke: joke,
+        punchLine: userPunchline,
+        userId: user.id,
+      },
+    });
 
     return NextResponse.json({
       joke,
