@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Provider from "./provider";
 import Header from "@/components/Header";
+import StoreProvider from "./store/providers";
 
 
 const geistSans = localFont({
@@ -41,11 +42,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-gradient-to-b from-purple-50 to-pink-100 antialiased`}
       >
-        <Provider>
+       <StoreProvider> 
+       <Provider>
           <Header />
 
           {children}
         </Provider>
+       </StoreProvider>
       </body>
     </html>
   );
