@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,13 @@ import {
 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../store/store";
-import { fetchJoke, submitPunchline, resetState, setUserPunchline, setError } from "../store/features/jokesSlice";
+import {
+  fetchJoke,
+  submitPunchline,
+  resetState,
+  setUserPunchline,
+  setError,
+} from "../store/features/jokesSlice";
 import type { RootState } from "../store/store";
 
 export default function GuessThePunchlinePage() {
@@ -34,7 +40,9 @@ export default function GuessThePunchlinePage() {
     dispatch(fetchJoke());
   }, [dispatch]);
 
-  const handleUserPunchlineChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUserPunchlineChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     dispatch(setUserPunchline(e.target.value));
   };
 

@@ -14,17 +14,25 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ session }) {
       const user = await prisma.user.findUnique({
-        where: {
-          email: session.user?.email || "",
-        },
+        where: { email: session.user?.email || "" },
       });
 
       if (user) {
-        session.user = {
-          ...user,
-        };
+        session.user = { ...user };
       }
       return session;
     },
   },
+  cookies: {
+    sessionToken: {
+      name: "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+  },
 };
+
