@@ -40,13 +40,13 @@ export default function Header() {
             }}
             className="flex items-center gap-2"
           >
-            {/* <Image
+            <Image
               src="/humorly-high-resolution-logo-transparent (1).png"
               width={40}
               height={40}
               alt="Humorly"
               className="w-8 h-8 md:w-10 md:h-10"
-            /> */}
+            />
             <h2 className="text-customPurple font-bold text-xl md:text-2xl">
               Humorly
             </h2>
