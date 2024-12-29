@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import jokesReducer from './features/jokesSlice';
+import memeReducer from './features/memeSlice'
 
 export const store = configureStore({
   reducer: {
     jokes: jokesReducer,
+    meme: memeReducer
   },
 });
 
